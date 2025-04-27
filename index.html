@@ -6,6 +6,7 @@
     <title>Sarthak Rohilla - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -25,23 +26,23 @@
     </header>
 
     <main>
-        <section id="home" class="section">
+        <section id="home" class="section animate-pop">
             <div class="container">
                 <h1>Sarthak Rohilla</h1>
                 <h2>Software Engineer | AI & ML Enthusiast</h2>
             </div>
         </section>
 
-        <section id="about" class="section">
+        <section id="about" class="section animate-slide-right">
             <div class="container">
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content">
-                    <div class="professional-summary">
+                    <div class="professional-summary" data-aos="fade-up" data-aos-delay="100">
                         <h3>Professional Summary</h3>
                         <p>An ambitious and results-driven Computer Science and Engineering student specializing in Artificial Intelligence and Machine Learning.</p>
                     </div>
                     
-                    <div class="education">
+                    <div class="education" data-aos="fade-up" data-aos-delay="200">
                         <h3>Education</h3>
                         <div class="education-item">
                             <h4>Dronacharya College of Engineering, Gurugram</h4>
@@ -53,7 +54,7 @@
                         </div>
                     </div>
                     
-                    <div class="achievements">
+                    <div class="achievements" data-aos="fade-up" data-aos-delay="300">
                         <h3>Achievements & Certifications</h3>
                         <ul>
                             <li>Participated in Snap Syntax competition at IIT Roorkee</li>
@@ -66,23 +67,23 @@
             </div>
         </section>
 
-        <section id="skills" class="section">
+        <section id="skills" class="section animate-slide-left">
             <div class="container">
                 <h2 class="section-title">Skills</h2>
                 <div class="skills-container">
-                    <div class="skill-category">
+                    <div class="skill-category" data-aos="zoom-in" data-aos-delay="100">
                         <h3>Programming</h3>
                         <div class="skill-item">Python</div>
                         <div class="skill-item">JavaScript</div>
                         <div class="skill-item">HTML/CSS</div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category" data-aos="zoom-in" data-aos-delay="100">
                         <h3>AI & ML</h3>
                         <div class="skill-item">Machine Learning</div>
                         <div class="skill-item">Deep Learning</div>
                         <div class="skill-item">Data Analysis</div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category" data-aos="zoom-in" data-aos-delay="100">
                         <h3>Tools</h3>
                         <div class="skill-item">Git</div>
                         <div class="skill-item">TensorFlow</div>
@@ -92,19 +93,19 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
+        <section id="projects" class="section animate-fade-in">
             <div class="container">
                 <h2 class="section-title">Projects</h2>
                 <div class="projects-grid">
-                    <div class="project-card">
+                    <div class="project-card" data-aos="flip-up" data-aos-delay="100">
                         <h3>Fake News Detection System</h3>
                         <p>AI-powered system to detect fake news</p>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-aos="flip-up" data-aos-delay="200">
                         <h3>Chatbots</h3>
                         <p>AI-driven chatbots for automation</p>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-aos="flip-up" data-aos-delay="300">
                         <h3>AI/ML Applications</h3>
                         <p>Worked on predictive analytics and automation</p>
                     </div>
@@ -112,17 +113,25 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
+        <section id="contact" class="section animate-slide-up">
             <div class="container">
                 <h2 class="section-title">Contact</h2>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>7042673200</p>
-                    </div>
-                    <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <p>sarthakrohilla2@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://www.linkedin.com/in/sarthak-rohilla-180345326/" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            <p>LinkedIn</p>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://github.com/sarthakrohilla01" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <p>GitHub</p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -134,5 +143,12 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false
+        });
+    </script>
 </body>
 </html>
