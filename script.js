@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize AOS
+  if (typeof AOS !== "undefined") {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    })
+  }
+
+  // Refresh AOS on window resize
+  window.addEventListener("resize", () => {
+    if (typeof AOS !== "undefined") {
+      AOS.refresh()
+    }
+  })
+})
+
 // DOM Elements
 const darkModeToggle = document.getElementById("dark-mode-toggle")
 const body = document.body
@@ -31,6 +49,47 @@ function disableDarkMode() {
   moonIcon.classList.remove("fa-sun")
   moonIcon.classList.add("fa-moon")
   localStorage.setItem("darkMode", null)
+}
+
+function addScrollAnimations() {
+  const animatedElements = document.querySelectorAll(
+    ".animate-pop, .animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-slide-up",
+  )
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1"
+          entry.target.style.transform = "translateY(0)"
+          entry.target.style.visibility = "visible"
+        } else {
+          entry.target.style.opacity = "0"
+          entry.target.style.visibility = "hidden"
+
+          if (entry.target.classList.contains("animate-slide-left")) {
+            entry.target.style.transform = "translateX(-100px)"
+          } else if (entry.target.classList.contains("animate-slide-right")) {
+            entry.target.style.transform = "translateX(100px)"
+          } else if (entry.target.classList.contains("animate-slide-up")) {
+            entry.target.style.transform = "translateY(100px)"
+          } else if (entry.target.classList.contains("animate-pop")) {
+            entry.target.style.transform = "scale(0.5)"
+          }
+        }
+      })
+    },
+    {
+      threshold: 0.1,
+    },
+  )
+
+  animatedElements.forEach((element) => {
+    element.style.opacity = "0"
+    element.style.visibility = "hidden"
+    element.style.transition = "opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease"
+    observer.observe(element)
+  })
 }
 
 // Smooth Scrolling
@@ -120,3 +179,55 @@ sections.forEach((section) => {
 // Initialize first section
 sections[0].style.opacity = "1"
 sections[0].style.transform = "translateY(0)"
+
+function toggleDarkModeWithAnimation() {
+  const darkModeToggle = document.getElementById("dark-mode-toggle")
+
+  darkModeToggle.addEventListener("click", function () {
+    this.classList.add("rotate-animation")
+    setTimeout(() => {
+      this.classList.remove("rotate-animation")
+    }, 500)
+  })
+}
+
+function addTypingAnimation() {
+  const homeTitle = document.querySelector("#home h2")
+  const text = homeTitle.textContent
+  homeTitle.textContent = ""
+
+  let i = 0
+  const typeWriter = () => {
+    if (i < text.length) {
+      homeTitle.textContent += text.charAt(i)
+      i++
+      setTimeout(typeWriter, 100)
+    }
+  }
+
+  // Start typing animation after a delay
+  setTimeout(typeWriter, 1000)
+}
+
+// Call the function after window load
+window.addEventListener("load", addScrollAnimations)
+window.addEventListener("load", toggleDarkModeWithAnimation)
+window.addEventListener("load", addTypingAnimation)
+
+// Add this CSS to the script for the rotate animation
+const style = document.createElement("style")
+style.textContent = `
+  .rotate-animation {
+    animation: rotate 0.5s ease;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`
+document.head.appendChild(style)
